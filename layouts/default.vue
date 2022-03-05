@@ -1,90 +1,104 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+  <v-app>
     <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
+      elevation="4"
+      color="#111214"
+      max-height="60px"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
-    </v-app-bar>
-    <v-main>
-      <v-container>
-        <Nuxt />
-      </v-container>
-    </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
+      <div class="d-flex flex-row justify-space-between align-center full-width">
+        <div class="d-flex flex-row">
+          <v-btn
+            plain
+            color="#ffffff"
+          >
+            <v-icon
+              color="#ffffff"
+              left
+            >
+              mdi-chevron-down
             </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :absolute="!fixed"
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+            <v-icon
+              color="#ffffff"
+              left
+            >
+              mdi-phone
+            </v-icon>
+            <span class="font-weight-bold text-center">
+            پشتیبانی
+          </span>
+          </v-btn>
+          <v-btn
+            color="#F0B90B"
+          >
+          <span class="font-weight-bold text-center">
+            ثبت نام
+          </span>
+          </v-btn>
+          <v-btn
+            plain
+            color="#F0B90B"
+          >
+          <span class="font-weight-bold text-center">
+            ورود
+          </span>
+          </v-btn>
+        </div>
+        <v-spacer></v-spacer>
+        <div class="d-flex flex-row">
+          <v-btn
+            text
+            color="#fff"
+          >
+          <span class="font-weight-bold text-center">
+            دعوت از دوستان
+          </span>
+          </v-btn>
+          <v-btn
+            text
+            color="#fff"
+          >
+          <span class="font-weight-bold text-center">
+            راهنمای گام به گام
+          </span>
+          </v-btn>
+          <v-btn
+            class="mx-2"
+            outlined
+            color="#F0B90B"
+          >
+          <span class="font-weight-bold text-center">
+            خرید آسان
+          </span>
+          </v-btn>
+          <v-btn
+            class="mx-2"
+            outlined
+            color="#ffffff"
+          >
+            <v-icon
+              color="#ffffff"
+              left
+            >
+              mdi-chevron-down
+            </v-icon>
+            <span class="font-weight-bold text-center">
+            خرید و فروش
+          </span>
+          </v-btn>
+          <v-img
+            lazy-src="https://tabdeal.org/tabdeal_panel_logo.png"
+            max-height="40"
+            max-width="136"
+            src="https://tabdeal.org/tabdeal_panel_logo.png"
+          ></v-img>
+        </div>
+      </div>
+
+    </v-app-bar>
+
+    <v-main>
+      <Nuxt />
+    </v-main>
   </v-app>
 </template>
 
@@ -116,3 +130,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .full-width {
+    width: 100% !important;
+  }
+</style>
