@@ -25,8 +25,10 @@
             </span>
           </v-btn>
           <v-text-field
-              class="tabdeal-input d-flex col-sm-7 mx-5 mb-5"
-              label="شماره همراه خود را وارد کنید"
+            dense
+            outlined
+            class="tabdeal-input d-flex col-sm-7"
+            label="شماره همراه خود را وارد کنید"
           >
           </v-text-field>
         </div>
@@ -37,7 +39,14 @@
 
 </template>
 <script>
+export default {
+  name: 'TabdealSlider',
+  data() {
+    return {
 
+    }
+  }
+}
 </script>
 <style scoped>
   .tabdeal-slider {
@@ -62,7 +71,6 @@
 
   .tabdeal-input {
     background-color: white;
-    border-radius: 5px;
   }
 
   .tabdeal-subtitle {

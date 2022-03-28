@@ -29,6 +29,7 @@
           </v-btn>
           <v-btn
             color="#F0B90B"
+            to="/register"
           >
           <span class="font-weight-bold text-center">
             ثبت نام
@@ -37,6 +38,7 @@
           <v-btn
             plain
             color="#F0B90B"
+            to="/login"
           >
           <span class="font-weight-bold text-center">
             ورود

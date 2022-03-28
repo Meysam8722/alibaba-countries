@@ -69,6 +69,7 @@ export default {
   data() {
     return {
       info: [],
+      middleware: 'authenticated',
       headers: [
         {
           text: 'نام',
