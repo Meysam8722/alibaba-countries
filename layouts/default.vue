@@ -2,98 +2,17 @@
   <v-app>
     <v-app-bar
       elevation="4"
-      color="#111214"
+      color="white"
       max-height="60px"
     >
       <div class="d-flex flex-row justify-space-between align-center full-width">
-        <div class="d-flex flex-row">
-          <v-btn
-            plain
-            color="#ffffff"
-          >
-            <v-icon
-              color="#ffffff"
-              left
-            >
-              mdi-chevron-down
-            </v-icon>
-            <v-icon
-              color="#ffffff"
-              left
-            >
-              mdi-phone
-            </v-icon>
-            <span class="font-weight-bold text-center">
-            پشتیبانی
-          </span>
-          </v-btn>
-          <v-btn
-            color="#F0B90B"
-            to="/register"
-          >
-          <span class="font-weight-bold text-center">
-            ثبت نام
-          </span>
-          </v-btn>
-          <v-btn
-            plain
-            color="#F0B90B"
-            to="/login"
-          >
-          <span class="font-weight-bold text-center">
-            ورود
-          </span>
-          </v-btn>
-        </div>
-        <v-spacer></v-spacer>
-        <div class="d-flex flex-row">
-          <v-btn
-            text
-            color="#fff"
-          >
-          <span class="font-weight-bold text-center">
-            دعوت از دوستان
-          </span>
-          </v-btn>
-          <v-btn
-            text
-            color="#fff"
-          >
-          <span class="font-weight-bold text-center">
-            راهنمای گام به گام
-          </span>
-          </v-btn>
-          <v-btn
-            class="mx-2"
-            outlined
-            color="#F0B90B"
-          >
-          <span class="font-weight-bold text-center">
-            خرید آسان
-          </span>
-          </v-btn>
-          <v-btn
-            class="mx-2"
-            outlined
-            color="#ffffff"
-          >
-            <v-icon
-              color="#ffffff"
-              left
-            >
-              mdi-chevron-down
-            </v-icon>
-            <span class="font-weight-bold text-center">
-            خرید و فروش
-          </span>
-          </v-btn>
-          <v-img
-            lazy-src="https://tabdeal.org/tabdeal_panel_logo.png"
-            max-height="40"
-            max-width="136"
-            src="https://tabdeal.org/tabdeal_panel_logo.png"
-          ></v-img>
-        </div>
+        <h3>Where in the world?</h3>
+        <v-btn text>
+          <v-icon left>
+            mdi-weather-night
+          </v-icon>
+          <span>Dark Mode</span>
+        </v-btn>
       </div>
 
     </v-app-bar>
