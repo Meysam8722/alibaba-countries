@@ -45,7 +45,12 @@
         <div class="d-flex flex-row justify-space-between align-center">
           <span class="font-weight-bold">Border Countries:</span>
           <div class="d-flex flex-row">
-            <v-btn v-for="(subItem, index) in country.borders" :key="index">
+            <v-btn
+              v-for="(subItem, index) in country.borders"
+              :key="index"
+              :loading="borderCountriesLoading[index]"
+              @click="getBorderCountry(subItem.toLowerCase(), index)"
+            >
               {{ subItem }}
             </v-btn>
           </div>
@@ -66,6 +71,8 @@ export default {
   data() {
     return {
       country: [],
+      selectedBorderCountry: "",
+      borderCountriesLoading: [],
     };
   },
   async fetch() {
@@ -76,10 +83,40 @@ export default {
     await this.$axios(config)
       .then((response) => {
         this.country = response.data[0];
+        this.makeBorderCountriesLoading();
       })
       .catch((error) => {
         console.log(error.response);
       });
+  },
+  methods: {
+    makeBorderCountriesLoading() {
+      let i;
+      for (i = 0; i < this.country.borders.length; i++) {
+        this.borderCountriesLoading[i] = false;
+      }
+    },
+    async getBorderCountry(alphaCode, index) {
+      this.borderCountriesLoading[index] = true;
+      const config = {
+        method: "get",
+        url: `https://restcountries.com/v2/alpha/${alphaCode}`,
+      };
+      await this.$axios(config)
+        .then((response) => {
+          setTimeout(() => {
+            this.borderCountriesLoading[index] = false;
+          }, 1000);
+          this.selectedBorderCountry = response.data.name;
+          this.$router.push(`/details/${this.selectedBorderCountry}`);
+        })
+        .catch((error) => {
+          setTimeout(() => {
+            this.borderCountriesLoading[index] = false;
+          }, 1000);
+          console.log(error.response.data);
+        });
+    },
   },
 };
 </script>

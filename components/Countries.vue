@@ -55,7 +55,7 @@ export default {
         this.items = response.data;
         console.log(
           response.data.map((item) => {
-            return item.borders;
+            return item.alpha3Code;
           })
         );
       })
