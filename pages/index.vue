@@ -27,6 +27,7 @@
         dense
         single-line
         hide-details
+        @change="selectRegionHandler"
       ></v-select>
     </div>
     <Countries :search="search" :region="region.name" />
@@ -49,6 +50,15 @@ import Countries from "~/components/Countries";
 
 export default {
   name: "HomePage",
+  components: {
+    TabdealSlider,
+    CoinList,
+    TabdealImages,
+    TabdealFamily,
+    WhyTabdeal,
+    TabdealAvailablity,
+    Countries,
+  },
   data() {
     return {
       search: "",
@@ -77,14 +87,24 @@ export default {
       ],
     };
   },
-  components: {
-    TabdealSlider,
-    CoinList,
-    TabdealImages,
-    TabdealFamily,
-    WhyTabdeal,
-    TabdealAvailablity,
-    Countries,
+  created() {
+    this.$router.push({
+      path: this.$route.path,
+      query: { ...this.$route.query, region: undefined },
+    });
+  },
+  // beforeRouteLeave(to, from, next) {
+  //   to.query = { ...to.$route.query, region: undefined };
+  //   next();
+  // },
+  methods: {
+    selectRegionHandler() {
+      console.log(this.region);
+      this.$router.push({
+        path: this.$route.path,
+        query: { ...this.$route.query, region: this.region.name },
+      });
+    },
   },
 };
 </script>

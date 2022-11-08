@@ -1,13 +1,14 @@
 <template>
   <v-container fluid>
-    <v-row>
+    <v-row class="ma-6">
       <v-col
         v-for="item in filteredCountries"
         :key="item.numericCode"
         cols="12"
-        sm="3"
+        sm="6"
+        md="3"
       >
-        <v-card max-width="200" height="400" class="mx-0">
+        <v-card height="400" class="mx-4" @click="goToDetailsPage(item)">
           <v-img height="100" :src="item.flag" />
           <v-card-title>
             {{ item.name }}
@@ -51,8 +52,12 @@ export default {
     };
     await this.$axios(config)
       .then((response) => {
-        console.log(response.data);
         this.items = response.data;
+        console.log(
+          response.data.map((item) => {
+            return item.borders;
+          })
+        );
       })
       .catch((error) => {
         console.log(error.response);
@@ -72,6 +77,12 @@ export default {
           );
         });
       }
+    },
+  },
+
+  methods: {
+    goToDetailsPage(item) {
+      this.$router.push("/details/" + item.name);
     },
   },
 };
