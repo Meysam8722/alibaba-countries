@@ -2,3 +2,14 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+@font-face {
+  font-family: NunitoSans;
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/NunitoSans-Regular.ttf');
+  /* IE6-8 */
+  /* FF39+,Chrome36+, Opera24+*/
+  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  src: url('/fonts/NunitoSans-Regular.ttf') format('ttf');
+}
