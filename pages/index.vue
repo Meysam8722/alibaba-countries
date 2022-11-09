@@ -1,62 +1,59 @@
 <template>
   <v-container fluid class="pa-0">
-    <div
-      class="d-flex flex-row justify-space-between align-center pa-4 full-width"
-    >
-      <v-text-field
-        v-model="search"
-        placeholder="Search for a country..."
-        prepend-inner-icon="mdi-magnify"
-        loading="false"
-        single-line
-        solo
-        dense
-        hide-details
-        max-width="100px"
-      ></v-text-field>
-      <v-select
-        v-model="region"
-        :items="menuItems"
-        item-text="name"
-        item-value="id"
-        placeholder="Filter by Region"
-        :menu-props="{ bottom: true, offsetY: true }"
-        persistent-hint
-        return-object
-        solo
-        dense
-        single-line
-        hide-details
-        @change="selectRegionHandler"
-      ></v-select>
-    </div>
+    <v-row class="justify-space-between pa-3 mx-10 mt-6 align-center">
+      <v-col cols="12" sm="6">
+        <div :class="$vuetify.breakpoint.smAndUp ? 'left-box' : ''">
+          <v-text-field
+            v-model="search"
+            placeholder="Search for a country..."
+            prepend-inner-icon="mdi-magnify"
+            loading="false"
+            single-line
+            solo
+            dense
+            hide-details
+            max-width="100px"
+            :background-color="darkMode ? 'darkBlue' : 'white'"
+            :class="darkMode ? 'white--text' : 'ultraDarkBlue--text'"
+            :color="darkMode ? 'white' : 'darkGrey'"
+            class="new-font-text"
+          ></v-text-field>
+        </div>
+      </v-col>
+      <v-col cols="12" sm="6">
+        <div :class="$vuetify.breakpoint.smAndUp ? 'right-box' : ''">
+          <v-select
+            v-model="region"
+            :items="menuItems"
+            item-text="name"
+            item-value="id"
+            placeholder="Filter by Region"
+            :menu-props="{ bottom: true, offsetY: true }"
+            persistent-hint
+            return-object
+            solo
+            dense
+            single-line
+            hide-details
+            class="ml-auto new-font-text light-text"
+            style="font-weight: 600"
+            :background-color="darkMode ? 'darkBlue' : 'white'"
+            :color="darkMode ? 'white' : 'darkGrey'"
+            :class="darkMode ? 'light-title' : 'dark-title'"
+            @change="selectRegionHandler"
+          ></v-select>
+        </div>
+      </v-col>
+    </v-row>
     <Countries :search="search" :region="region.name" />
-    <TabdealSlider />
-    <CoinList />
-    <TabdealImages />
-    <TabdealFamily />
-    <WhyTabdeal />
-    <TabdealAvailablity />
   </v-container>
 </template>
 <script>
-import TabdealSlider from "@/components/TabdealSlider";
-import CoinList from "@/components/CoinList";
-import TabdealImages from "@/components/TabdealImages";
-import TabdealFamily from "@/components/TabdealFamily";
-import WhyTabdeal from "@/components/WhyTabdeal";
-import TabdealAvailablity from "@/components/TabdealAvailablity";
 import Countries from "~/components/Countries";
 
 export default {
   name: "HomePage",
   components: {
-    TabdealSlider,
-    CoinList,
-    TabdealImages,
-    TabdealFamily,
-    WhyTabdeal,
-    TabdealAvailablity,
     Countries,
   },
   data() {
@@ -87,6 +84,11 @@ export default {
       ],
     };
   },
+  computed: {
+    darkMode() {
+      return this.$store.getters.getDarkMode;
+    },
+  },
   created() {
     this.$router.push({
       path: this.$route.path,
@@ -99,7 +101,6 @@ export default {
   // },
   methods: {
     selectRegionHandler() {
-      console.log(this.region);
       this.$router.push({
         path: this.$route.path,
         query: { ...this.$route.query, region: this.region.name },
@@ -109,7 +110,24 @@ export default {
 };
 </script>
 <style scoped>
+.new-font-text {
+  font-family: NunitoSans;
+}
 >>> .v-input__slot {
   max-width: 250px !important;
+}
+.left-box >>> .v-input__control {
+  flex-direction: row;
+  justify-content: start;
+}
+.right-box >>> .v-input__control {
+  flex-direction: row;
+  justify-content: end;
+}
+.dark-title >>> .v-select .v-select__selections {
+  color: #111517 !important;
+}
+.light-title >>> .v-select .v-select__selections {
+  color: #ffffff !important;
 }
 </style>

@@ -1,21 +1,13 @@
 export const state = () => ({
-  username: '',
-  password: '',
-})
+  darkMode: false,
+});
 
 export const mutations = {
-  setUsername: (state, payload) => {
-    state.username = payload
+  setDarkMode: (state, payload) => {
+    state.darkMode = payload;
   },
-  setPassword: (state, payload) => {
-    state.password = payload
-  }
-}
+};
 
 export const getters = {
-  getUsername: (state) => this.state.username,
-  getPassword: (state) => this.state.password
-}
-
-
-
+  getDarkMode: (state) => state.darkMode,
+};
