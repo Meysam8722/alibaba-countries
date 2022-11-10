@@ -83,5 +83,11 @@ span {
   h3 {
     font-size: 14px;
   }
+  span {
+    font-size: 12px;
+  }
+}
+.v-btn {
+  text-transform: unset !important;
 }
 </style>

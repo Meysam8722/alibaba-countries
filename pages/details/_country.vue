@@ -42,4 +42,7 @@ export default {
 .normal-size {
   font-size: 16px;
 }
+.v-btn {
+  text-transform: unset !important;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <v-container fluid class="pa-0">
-    <v-row class="justify-space-between pa-3 mx-10 mt-6 align-center">
+    <v-row class="justify-space-between pa-3 mx-1 mx-sm-10 mt-6 align-center">
       <v-col cols="12" sm="6">
         <div :class="$vuetify.breakpoint.smAndUp ? 'left-box' : ''">
           <v-text-field
@@ -14,7 +14,7 @@
             hide-details
             max-width="100px"
             :background-color="darkMode ? 'darkBlue' : 'white'"
-            :class="darkMode ? 'white--text' : 'ultraDarkBlue--text'"
+            :class="darkMode ? 'light-title' : 'dark-title'"
             :color="darkMode ? 'white' : 'darkGrey'"
             class="new-font-text"
           ></v-text-field>
@@ -44,8 +44,30 @@
           ></v-select>
         </div>
       </v-col>
+      <div class="mt-6 mx-3">
+        <span :class="darkMode ? 'white--text' : 'ultraDarkBlue--text'"
+          >Sort By Population:</span
+        >
+        <v-btn-toggle v-model="sortPopulations" rounded mandatory class="mt-2">
+          <v-btn
+            v-for="(item, index) in sortButtonTitles"
+            :key="index"
+            small
+            class="new-font-text sort-button"
+            :class="darkMode ? 'white--text' : 'ultraDarkBlue--text'"
+            :color="darkMode ? 'darkBlue' : 'white'"
+            style="font-weight: 600"
+          >
+            {{ item }}
+          </v-btn>
+        </v-btn-toggle>
+      </div>
     </v-row>
-    <Countries :search="search" :region="region.name" />
+    <Countries
+      :search="search"
+      :region="region.name"
+      :sort-populations="sortPopulations"
+    />
   </v-container>
 </template>
 <script>
@@ -60,6 +82,8 @@ export default {
     return {
       search: "",
       region: "",
+      sortPopulations: 0,
+      sortButtonTitles: ["None", "Ascending", "Descending"],
       menuItems: [
         {
           id: 1,
@@ -113,6 +137,9 @@ export default {
 .new-font-text {
   font-family: NunitoSans;
 }
+span {
+  font-family: NunitoSans;
+}
 >>> .v-input__slot {
   max-width: 250px !important;
 }
@@ -124,10 +151,30 @@ export default {
   flex-direction: row;
   justify-content: end;
 }
-.dark-title >>> .v-select .v-select__selections {
-  color: #111517 !important;
+
+>>> .dark-title.v-select .v-select__selections {
+  color: hsl(200, 15%, 8%);
 }
-.light-title >>> .v-select .v-select__selections {
+>>> .light-title.v-select .v-select__selections {
   color: #ffffff !important;
+}
+>>> .dark-title.v-input input {
+  color: hsl(200, 15%, 8%);
+}
+>>> .light-title.v-input input {
+  color: white;
+}
+>>> .dark-title.v-input input::placeholder {
+  color: hsl(0, 0%, 52%);
+}
+>>> .light-title.v-input input::placeholder {
+  color: hsl(0, 0%, 70%);
+}
+.v-btn {
+  text-transform: unset !important;
+}
+.v-btn-toggle > .sort-button.v-btn.v-btn--active {
+  background-color: hsl(0, 0%, 52%) !important;
+  color: white !important;
 }
 </style>

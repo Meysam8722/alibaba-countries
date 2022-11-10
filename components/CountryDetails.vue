@@ -144,4 +144,7 @@ span {
   font-family: NunitoSans;
   font-size: 16px;
 }
+.v-btn {
+  text-transform: unset !important;
+}
 </style>
