@@ -36,8 +36,10 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/axios"],
-
+  modules: ["@nuxtjs/axios", "@nuxtjs/gtm"],
+  gtm: {
+    id: "GTM-XXXXXXX",
+  },
   axios: {
     // proxy: true
   },

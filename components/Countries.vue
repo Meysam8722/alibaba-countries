@@ -1,5 +1,18 @@
 <template>
-  <v-container fluid class="px-0 px-sm-3">
+  <v-container v-if="$fetchState.pending" fluid class="px-0 px-sm-3">
+    <v-row class="my-6 mx-0 mx-sm-6">
+      <v-col v-for="item in [0, 1, 2, 3]" :key="item" cols="12" sm="6" md="3">
+        <v-skeleton-loader class="mx-auto" max-width="300" type="card">
+        </v-skeleton-loader>
+      </v-col>
+    </v-row>
+  </v-container>
+  <v-container v-else-if="$fetchState.error"
+    ><div class="d-flex flex-row justify-center align-center mt-10">
+      An error occurred!
+    </div></v-container
+  >
+  <v-container v-else fluid class="px-0 px-sm-3">
     <v-row class="my-6 mx-0 mx-sm-6">
       <v-col
         v-for="item in sortedCountries"
@@ -145,6 +158,7 @@ export default {
   },
   methods: {
     goToDetailsPage(item) {
+      this.$gtm.push({ event: "countryClicked", item });
       this.$router.push("/details/" + item.alpha3Code);
     },
   },

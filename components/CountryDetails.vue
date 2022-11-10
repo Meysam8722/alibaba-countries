@@ -1,5 +1,23 @@
 <template>
-  <v-container fluid>
+  <v-container v-if="$fetchState.pending" fluid>
+    <v-row>
+      <v-col cols="12" sm="6" class="pr-3 pr-sm-16">
+        <v-skeleton-loader class="mx-auto" max-width="600" type="card">
+        </v-skeleton-loader>
+      </v-col>
+      <v-skeleton-loader
+        v-bind="attrs"
+        max-width="600"
+        type="article, actions"
+      ></v-skeleton-loader>
+    </v-row>
+  </v-container>
+  <v-container v-else-if="$fetchState.error"
+    ><div class="d-flex flex-row justify-center align-center mt-10">
+      An error occurred!
+    </div></v-container
+  >
+  <v-container v-else fluid>
     <v-row>
       <v-col cols="12" sm="6" class="pr-3 pr-sm-16">
         <v-img :src="country.flag" aspect-ratio="4/3" max-height="300"></v-img>
@@ -82,6 +100,11 @@ export default {
     return {
       country: [],
       alphaCodes: "",
+      attrs: {
+        class: "mb-6",
+        boilerplate: true,
+        elevation: 2,
+      },
       borderCountries: [],
     };
   },
