@@ -27,7 +27,8 @@
 
 - I was Dockerizing my project but the installation process of Docker took too long until I gave up
 
-- I tryed deploying the project on Vercel but the process encountered an error and failed.
+- The website containing the project is visible in the link below:
+https://alibabacountries.netlify.app/
 
 ## Build Setup
 
