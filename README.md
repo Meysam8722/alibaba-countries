@@ -47,28 +47,6 @@ $ yarn start
 $ yarn generate
 ```
 
-- I used Nuxt.js to handle server-side rendering
-
-- I used Vuetify library for components and styles
-
-- In many cases I changed Vuetify default styles in order to meet the requirements of the project
-
-- The placeholder attribute is added to image components in order to handle lazy loading
-
-- I used v-skeleton-loader to show when the data from the api has not been received yet
-
-- The dark mode theme is implemented without using any 3rd party library
-
-- I also added the sort functionality to the project
-
-- The @nuxtjs/gtm module is added to the project to collect analytical data
-
-- The styles of different components has been seperated from each other thanks to 'scoped' property
-
-- The ratio for the country flags is 4:3
-
-- The region filters are stored in the URL query settings
-
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
 ## Special Directories
